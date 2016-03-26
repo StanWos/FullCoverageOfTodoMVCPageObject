@@ -13,7 +13,7 @@ public class TodoMVCTestAtActive {
 
     @Test
     public void testEditAtActive() {
-        page.givenAtActive(aTask("1", ACTIVE));
+        page.givenAtActive(page.aTask("1", ACTIVE));
 
         page.startEdit("1", "1 edited").pressEnter();
         page.assertTasks("1 edited");
@@ -22,7 +22,7 @@ public class TodoMVCTestAtActive {
 
     @Test
     public void testDeleteAtActive() {
-        page.givenAtActive(aTask("1", ACTIVE));
+        page.givenAtActive(page.aTask("1", ACTIVE));
 
         page.delete("1");
         page.assertNoTasks();
@@ -30,7 +30,7 @@ public class TodoMVCTestAtActive {
 
     @Test
     public void testCompleteAtActive() {
-        page.givenAtActive(aTask("1", COMPLETED), aTask("2", ACTIVE));
+        page.givenAtActive(page.aTask("1", COMPLETED), page.aTask("2", ACTIVE));
 
         page.toggle("2");
         page.assertNoVisibleTasks();
@@ -39,7 +39,7 @@ public class TodoMVCTestAtActive {
 
     @Test
     public void testReopenAllAtActive() {
-        page.givenAtActive(aTask("1", ACTIVE), aTask("2", COMPLETED));
+        page.givenAtActive(page.aTask("1", ACTIVE), page.aTask("2", COMPLETED));
 
         page.toggleAll();
         page.assertNoVisibleTasks();
@@ -57,7 +57,7 @@ public class TodoMVCTestAtActive {
 
     @Test
     public void testClearCompletedAtActive() {
-        page.givenAtActive(aTask("1", ACTIVE), aTask("2", COMPLETED));
+        page.givenAtActive(page.aTask("1", ACTIVE), page.aTask("2", COMPLETED));
 
         page.clearCompleted();
         page.assertVisibleTasks("1");
@@ -96,7 +96,7 @@ public class TodoMVCTestAtActive {
 
     @Test
     public void goToAll() {
-        page.givenAtActive(aTask("1", COMPLETED));
+        page.givenAtActive(page.aTask("1", COMPLETED));
 
         page.filterAll();
         page.assertTasks("1");

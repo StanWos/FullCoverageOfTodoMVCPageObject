@@ -13,7 +13,7 @@ public class TodoMVCTestAtCompleted {
 
     @Test
     public void testAddAtCompleted() {
-        page.givenAtCompleted(aTask("1", ACTIVE));
+        page.givenAtCompleted(page.aTask("1", ACTIVE));
         page.add("2");
 
         page.assertNoVisibleTasks();
@@ -40,7 +40,7 @@ public class TodoMVCTestAtCompleted {
 
     @Test
     public void testReopenAtCompleted() {
-        page.givenAtCompleted(aTask("1", COMPLETED));
+        page.givenAtCompleted(page.aTask("1", COMPLETED));
 
         page.toggle("1");
         page.assertNoVisibleTasks();
@@ -49,7 +49,7 @@ public class TodoMVCTestAtCompleted {
 
     @Test
     public void testReopenAllAtCompleted() {
-        page.givenAtCompleted(aTask("1", ACTIVE), aTask("2", ACTIVE), aTask("3", COMPLETED));
+        page.givenAtCompleted(page.aTask("1", ACTIVE), page.aTask("2", ACTIVE), page.aTask("3", COMPLETED));
 
         page.toggleAll();
         page.assertVisibleTasks("1", "2", "3");
@@ -58,7 +58,7 @@ public class TodoMVCTestAtCompleted {
 
     @Test
     public void testEditCancelledAtCompleted() {
-        page.givenAtCompleted(aTask("1", COMPLETED));
+        page.givenAtCompleted(page.aTask("1", COMPLETED));
 
         page.startEdit("1", "1 edited cancelled").pressEscape();
         page.assertTasks("1");
@@ -67,7 +67,7 @@ public class TodoMVCTestAtCompleted {
 
     @Test
     public void testEditByClickOutsideAtCompleted() {
-        page.givenAtCompleted(aTask("1", COMPLETED));
+        page.givenAtCompleted(page.aTask("1", COMPLETED));
 
         page.startEdit("1", "1 edited");
         page.newTodo.click();
@@ -77,7 +77,7 @@ public class TodoMVCTestAtCompleted {
 
     @Test
     public void testEditByClickTabAtCompleted() {
-        page.givenAtCompleted(aTask("1", COMPLETED));
+        page.givenAtCompleted(page.aTask("1", COMPLETED));
 
         page.startEdit("1", "1 edited").pressTab();
         page.assertTasks("1 edited");
@@ -86,7 +86,7 @@ public class TodoMVCTestAtCompleted {
 
     @Test
     public void testDeleteByEmptyingEditedTextAtCompleted() {
-        page.givenAtCompleted(aTask("1", COMPLETED));
+        page.givenAtCompleted(page.aTask("1", COMPLETED));
 
         page.startEdit("1", "").pressEnter();
         page.assertNoTasks();
@@ -94,7 +94,7 @@ public class TodoMVCTestAtCompleted {
 
     @Test
     public void testDeleteAtCompleted() {
-        page.givenAtCompleted(aTask("1", COMPLETED), aTask("2", ACTIVE));
+        page.givenAtCompleted(page.aTask("1", COMPLETED), page.aTask("2", ACTIVE));
 
         page.delete("1");
         page.assertNoVisibleTasks();
@@ -105,7 +105,7 @@ public class TodoMVCTestAtCompleted {
 
     @Test
     public void goToActive() {
-        page.givenAtCompleted(aTask("1", ACTIVE), aTask("2", COMPLETED));
+        page.givenAtCompleted(page.aTask("1", ACTIVE), page.aTask("2", COMPLETED));
 
         page.filterActive();
         page.assertVisibleTasks("1");
