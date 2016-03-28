@@ -1,16 +1,15 @@
-package com.main;
+package com.todomvc;
 
-import com.main.page.TodoMVCPage;
+import pages.TodoMVCPage;
 import org.junit.Test;
 
-/**
- * Created by stan on 21.03.16.
- */
-public class TodoMVCTestLifeCycle {
+
+public class TodoMVCLifeCycleTest {
+
+    TodoMVCPage page = new TodoMVCPage();
 
     @Test
     public void testTaskLifeCycle() {
-        TodoMVCPage page = new TodoMVCPage();
 
         page.givenAtAll();
         page.add("1");

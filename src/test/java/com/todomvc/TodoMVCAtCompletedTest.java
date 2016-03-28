@@ -1,13 +1,11 @@
-package com.main;
+package com.todomvc;
 
-import com.main.page.TodoMVCPage;
+import pages.TodoMVCPage;
 import org.junit.Test;
-import static com.main.page.TodoMVCPage.TaskType.*;
+import static pages.TodoMVCPage.TaskType.*;
 
-/**
- * Created by stan on 25.03.16.
- */
-public class TodoMVCTestAtCompleted {
+
+public class TodoMVCAtCompletedTest {
 
     TodoMVCPage page = new TodoMVCPage();
 
